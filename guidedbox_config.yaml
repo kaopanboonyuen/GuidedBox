@@ -1,0 +1,29 @@
+# Author: Teerapong Panboonyuen (Kao Panboonyuen)
+# Project: GuidedBox - Guided Box-based Pseudo Mask Learning for Instance Segmentation
+# Description: Configuration file for the GuidedBox model. This YAML file contains settings for 
+#              training, evaluation, and model parameters, including paths to datasets 
+#              and hyperparameters like learning rate and batch size.
+# License: MIT License
+
+device: 'cuda'  # or 'cpu'
+num_epochs: 50
+batch_size: 8
+learning_rate: 0.0001
+ema_alpha: 0.9
+
+train_data_path: '/path/to/train/dataset'
+eval_data_path: '/path/to/eval/dataset'
+save_path: '/path/to/save/model'
+
+model_checkpoint: '/path/to/saved/model/checkpoint.pth'
+
+train_transforms:
+  - RandomCrop: [512, 512]
+  - RandomRotate: [0, 90, 180, 270]
+  - ColorJitter: [0.4, 0.4, 0.4, 0.4]
+  - RandomGravel: True
+  - RandomGamma: [0.8, 1.2]
+  - Posterize: [4]
+
+eval_transforms:
+  - CenterCrop: [512, 512]
