@@ -1,6 +1,3 @@
-Here's a **README.md** file design for your "GuidedBox" project, incorporating emojis, badges, and a structured layout that makes it appealing and easy to read:
-
-```markdown
 # 🚧 **GuidedBox: A Segmentation-Guided Box Teacher-Student Approach for Weakly Supervised Road Segmentation**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
