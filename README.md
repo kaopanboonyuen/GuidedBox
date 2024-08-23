@@ -117,5 +117,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 For questions or collaborations, please reach out:
 
 - **Teerapong Panboonyuen**  
-  - [Website: https://kaopanboonyuen.github.io](https://kaopanboonyuen.github.io)  
-  - [Email: panboonyuen.kao@gmail.com](mailto:panboonyuen.kao@gmail.com)
+  - [https://kaopanboonyuen.github.io](https://kaopanboonyuen.github.io)  
+  - [panboonyuen.kao@gmail.com](mailto:panboonyuen.kao@gmail.com)
