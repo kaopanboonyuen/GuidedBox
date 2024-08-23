@@ -1,0 +1,12 @@
+# Author: Teerapong Panboonyuen (Kao Panboonyuen)
+# Project: GuidedBox - Guided Box-based Pseudo Mask Learning for Instance Segmentation
+# Description: Dependencies required to run the GuidedBox model and training scripts.
+# License: MIT License
+
+torch==2.0.1
+torchvision==0.15.2
+pyyaml==6.0
+Pillow==9.2.0
+opencv-python==4.7.0.68
+numpy==1.23.5
+matplotlib==3.7.1
