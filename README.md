@@ -90,11 +90,11 @@ If you find **GuidedBox** helpful in your research, please consider citing:
 
 ### **BibTeX for GuidedBox**
 ```bibtex
-@article{panboonyuen2024guidedbox,
+@article{panboonyuen2025guidedbox,
   title={GuidedBox: A segmentation-guided box teacher-student approach for weakly supervised road segmentation},
   author={Panboonyuen, Teerapong},
   journal={European Journal of Remote Sensing},
-  year={2024}
+  year={2025}
 }
 ```
 
