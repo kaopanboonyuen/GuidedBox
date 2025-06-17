@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GuidedBox: Weakly Supervised Road Segmentation</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><text x='0' y='48' font-size='48'>🛣️</text></svg>">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f7fa;
+            color: #2a2a2a;
+            animation: fadeInBody 1s ease forwards;
+        }
+        @keyframes fadeInBody {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        header {
+            background-color: #1e293b;
+            color: #f8fafc;
+            padding: 60px 20px;
+            text-align: center;
+            animation: fadeInHeader 1.2s ease forwards;
+        }
+        @keyframes fadeInHeader {
+            from {opacity: 0; transform: translateY(-20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.6rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        header .subtitle {
+            margin-top: 10px;
+            font-weight: 300;
+            font-size: 1.2rem;
+            color: #94a3b8;
+        }
+        header .badges {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        header .badges a img {
+            height: 28px;
+            transition: transform 0.3s ease;
+        }
+        header .badges a:hover img {
+            transform: scale(1.1);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto 80px;
+            padding: 0 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+            animation: fadeInSection 0.9s ease forwards;
+        }
+        @keyframes fadeInSection {
+            from {opacity: 0; transform: translateY(15px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        h2 {
+            color: #1e293b;
+            font-weight: 600;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 6px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            line-height: 1.6;
+        }
+
+        pre {
+            background: #e2e8f0;
+            border-radius: 6px;
+            padding: 15px;
+            font-size: 0.95rem;
+            overflow-x: auto;
+            color: #1e293b;
+            user-select: text;
+        }
+
+        a.button {
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 12px;
+            transition: background-color 0.3s ease;
+        }
+        a.button:hover {
+            background-color: #3b82f6;
+            color: #f1f5f9;
+        }
+
+        img.project-image {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+        img.project-image:hover {
+            transform: scale(1.03);
+        }
+
+        footer {
+            background-color: #1e293b;
+            color: #f8fafc;
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            background: #cbd5e1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>GuidedBox: A Segmentation-Guided Box Teacher-Student Approach for Weakly Supervised Road Segmentation 🛣️</h1>
+    <div class="subtitle">Teerapong Panboonyuen</div>
+    <div class="badges">
+        <a href="LICENSE" target="_blank" title="MIT License"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" /></a>
+        <a href="https://kaopanboonyuen.github.io/GuidedBox" target="_blank" title="Project Status: In Progress"><img src="https://img.shields.io/badge/status-in%20progress-yellow" alt="In Progress" /></a>
+        <a href="https://www.tandfonline.com/toc/tres20/current" target="_blank" title="Review Status"><img src="https://img.shields.io/badge/review-European%20Journal%20of%20Remote%20Sensing-orange" alt="Review Status" /></a>
+    </div>
+</header>
+
+<div class="container">
+    <section>
+        <h2>🚀 Abstract</h2>
+        <p>
+            Road segmentation in remote sensing is essential for applications such as urban planning, traffic monitoring, and autonomous driving.
+            However, obtaining pixel-wise segmentation labels is labor-intensive. <strong>GuidedBox</strong> addresses this challenge with a novel
+            weakly supervised approach that leverages segmentation-guided box annotations.
+        </p>
+        <p>
+            Using a teacher-student framework, the teacher generates high-quality pseudo masks, while a noise-aware confidence scoring
+            mechanism filters low-quality masks to optimize training dynamically. Our method achieves state-of-the-art performance with
+            an <strong>AP50 score of 0.9231</strong> on the Massachusetts Roads Dataset, surpassing existing methods such as SOLOv2, CondInst,
+            and Mask R-CNN.
+        </p>
+        <img src="img/GuidedBox_panboonyuen.png" alt="GuidedBox in Action" class="project-image" />
+    </section>
+
+    <section>
+        <h2>👥 Author</h2>
+        <p><strong>Teerapong Panboonyuen (Kao Panboonyuen)</strong><br />
+        Laboratory of Mapping and Positioning from Space (MAPS) Technology Research Center,<br />
+        Department of Survey Engineering, Faculty of Engineering, Chulalongkorn University</p>
+    </section>
+
+    <section>
+        <h2>📊 Results and Achievements</h2>
+        <ul>
+            <li>Achieved a <strong>0.9231 AP50</strong> score on the Massachusetts Roads Dataset with Swin-Base-FPN.</li>
+            <li>Outperformed state-of-the-art methods like SOLOv2, CondInst, and Mask R-CNN in weakly supervised road segmentation.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>⚙️ Quick Start</h2>
+        <h3>Requirements</h3>
+        <ul>
+            <li>Python 3.8+</li>
+            <li>PyTorch 1.8+</li>
+            <li>CUDA 11.1+</li>
+            <li>Other dependencies listed in <code>requirements.txt</code></li>
+        </ul>
+
+        <h3>Installation</h3>
+        <pre>
+git clone https://github.com/kaopanboonyuen/GuidedBox.git
+cd GuidedBox
+
+python3 -m venv guidedbox-env
+source guidedbox-env/bin/activate  # Windows: guidedbox-env\Scripts\activate
+
+pip install -r requirements.txt
+        </pre>
+
+        <h3>Download Dataset</h3>
+        <p>
+            Download the <a href="https://www.cs.toronto.edu/~vmnih/data/" target="_blank" rel="noopener">Massachusetts Roads Dataset</a> and place it inside the <code>data/</code> directory.
+        </p>
+    </section>
+
+    <section>
+        <h2>📈 How to Use</h2>
+        <h3>Train the Model</h3>
+        <pre>python train.py --config configs/guidedbox_config.yaml</pre>
+
+        <h3>Evaluate the Model</h3>
+        <pre>python evaluate.py --checkpoint checkpoints/guidedbox_best_model.pth --data data/test/</pre>
+
+        <h3>Run Inference</h3>
+        <pre>python inference.py --image_path images/sample.jpg --output_dir results/</pre>
+    </section>
+
+    <section>
+        <h2>🌍 Live Demo</h2>
+        <p>
+            Experience GuidedBox online: <a href="https://kaopanboonyuen.github.io/GuidedBox" class="button" target="_blank" rel="noopener">GuidedBox Demo</a>
+        </p>
+    </section>
+
+    <section>
+        <h2>📂 Datasets</h2>
+        <p>
+            - Public Dataset: <a href="https://www.cs.toronto.edu/~vmnih/data/" target="_blank" rel="noopener">Massachusetts Roads Dataset</a>
+        </p>
+    </section>
+
+    <section>
+        <h2>🔍 Citations</h2>
+        <p>If you find <strong>GuidedBox</strong> useful, please cite:</p>
+        <pre>
+@article{panboonyuen2025guidedbox,
+  title={GuidedBox: A segmentation-guided box teacher-student approach for weakly supervised road segmentation},
+  author={Panboonyuen, Teerapong},
+  journal={European Journal of Remote Sensing},
+  year={2025}
+}
+        </pre>
+        <p>And for the dataset:</p>
+        <pre>
+@phdthesis{MnihThesis,
+  author = {Volodymyr Mnih},
+  title = {Machine Learning for Aerial Image Labeling},
+  school = {University of Toronto},
+  year = {2013}
+}
+        </pre>
+    </section>
+
+    <section>
+        <h2>📜 License</h2>
+        <p>This project is licensed under the <a href="LICENSE" target="_blank" rel="noopener">MIT License</a>.</p>
+    </section>
+
+    <section>
+        <h2>📧 Contact</h2>
+        <p>
+            <strong>Teerapong Panboonyuen</strong><br />
+            <a href="https://kaopanboonyuen.github.io" target="_blank" rel="noopener">https://kaopanboonyuen.github.io</a><br />
+            <a href="mailto:panboonyuen.kao@gmail.com">panboonyuen.kao@gmail.com</a>
+        </p>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2025 Laboratory of Mapping and Positioning from Space (MAPS), Chulalongkorn University | Developed by
+        <a href="mailto:panboonyuen.kao@gmail.com">Teerapong Panboonyuen</a>
+    </p>
+</footer>
+
+</body>
+</html>
