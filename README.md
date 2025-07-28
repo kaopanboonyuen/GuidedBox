@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Project Status](https://img.shields.io/badge/status-in%20progress-yellow)](https://kaopanboonyuen.github.io/GuidedBox)
-[![Review Status](https://img.shields.io/badge/review-European%20Journal%20of%20Remote%20Sensing-orange)](https://www.tandfonline.com/toc/tres20/current)
+[![Accept Status](https://img.shields.io/badge/accept-European%20Journal%20of%20Remote%20Sensing-orange)](https://www.tandfonline.com/toc/tres20/current)
 
 Welcome to the official repository for **GuidedBox**, an innovative approach for enhancing weakly supervised road segmentation using a teacher-student framework. This repository provides the code and resources to replicate our results and explore the capabilities of GuidedBox.
 
