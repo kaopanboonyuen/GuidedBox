@@ -8,6 +8,10 @@ Welcome to the official repository for **GuidedBox**, an innovative approach for
 
 ![GuidedBox in Action](img/GuidedBox_panboonyuen.png)
 
+## 📄 **Official Publication**
+
+Read the published paper: [GuidedBox in European Journal of Remote Sensing](https://www.tandfonline.com/doi/full/10.1080/22797254.2025.2540963)
+
 ## 📝 **Abstract**
 
 Road segmentation in remote sensing is crucial for various applications such as urban planning, traffic monitoring, and autonomous driving. However, manually creating pixel-wise segmentation labels is a time-consuming task. To address this, **GuidedBox** proposes a novel weakly supervised approach that leverages segmentation-guided box annotations. Using a teacher model to generate precise pseudo masks, our framework dynamically evaluates and optimizes the learning process to improve segmentation quality.
@@ -90,11 +94,17 @@ If you find **GuidedBox** helpful in your research, please consider citing:
 
 ### **BibTeX for GuidedBox**
 ```bibtex
-@article{panboonyuen2025guidedbox,
-  title={GuidedBox: A segmentation-guided box teacher-student approach for weakly supervised road segmentation},
-  author={Panboonyuen, Teerapong},
-  journal={European Journal of Remote Sensing},
-  year={2025}
+@article{Panboonyuen2025GuidedBox,
+  title     = {GuidedBox: a segmentation-guided box teacher-student approach for weakly supervised road segmentation},
+  author    = {Teerapong Panboonyuen},
+  journal   = {European Journal of Remote Sensing},
+  volume    = {58},
+  number    = {1},
+  year      = {2025},
+  doi       = {10.1080/22797254.2025.2540963},
+  publisher = {Taylor & Francis},
+  url       = {https://doi.org/10.1080/22797254.2025.2540963},
+  note      = {Article 2540963, Received 13 May 2024, Accepted 24 Jul 2025, Published online: 01 Aug 2025}
 }
 ```
 
